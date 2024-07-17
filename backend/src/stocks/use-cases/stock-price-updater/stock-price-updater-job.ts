@@ -12,6 +12,7 @@ export class StocksPriceUpdaterJob {
     @InjectModel(Stocks.name)
     private stocksPriceModel: Model<Stocks>
   ) {}
+
   @Interval(intervalTime)
   async handle() {
     const stocks = await this.getStockPriceData();
@@ -29,7 +30,7 @@ export class StocksPriceUpdaterJob {
       sort: "rank",
       order: "ascending",
       offset: 0,
-      limit: process.env.NO_OF_STOCKS,
+      limit: parseInt(process.env.NO_OF_STOCKS),
       meta: false,
     };
 
