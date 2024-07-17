@@ -1,0 +1,14 @@
+version: "3.6"
+services:
+  stocks-db:
+    image: mongo:6.0.4
+    restart: always
+    ports:
+      - 27017:27017
+    volumes:
+      - stocks-db-data:/data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${DATABASE_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${DATABASE_PASSWORD}
+volumes:
+  stocks-db-data:
